@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Tiro+Devanagari+Sanskrit&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-[#121212] text-gray-100 font-poppins;
+    overflow-x: hidden;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-[#1a1a1a];
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-[#333] rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-[#FF9933];
+  }
+}
+
+/* Font classes are handled by Tailwind config, but these are fallback utility classes if needed. */
+.font-tiro {
+  font-family: 'Tiro Devanagari Sanskrit', serif;
+}
+.font-poppins {
+  font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Add smooth transitions for all interactive elements */
+a, button {
+  @apply transition-all duration-300;
+  outline: none;
+}
+a:focus, button:focus {
+  outline: 2px solid #FF9933;
+  outline-offset: 2px;
+}
+
+/* Custom animation for the Om symbol */
+@keyframes pulse-glow {
+  0% {
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 153, 51, 0.6);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+  }
+}
+
+@keyframes twinkle {
+  0% { transform: scale(1); opacity: 0.3; }
+  100% { transform: scale(1.5); opacity: 0.8; }
+}
+
+.animate-twinkle {
+  animation: twinkle ease-in-out infinite alternate;
+}
+
+/* Custom slow bounce animation for scroll indicator */
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(18px);
+  }
+}
+.animate-bounce-slow {
+  animation: bounce-slow 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom drop shadow for glowing arrow */
+.drop-shadow-glow {
+  filter: drop-shadow(0 0 8px #FF9933) drop-shadow(0 0 16px #FFD700);
+}
+
+.text-\[\#FFD700\] {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
